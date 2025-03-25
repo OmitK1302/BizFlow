@@ -1,6 +1,6 @@
 # React + Vite
 
-Hello Buddy
+Hello Rishabh
 
 ## Expanding the ESLint configuration
 
