@@ -1,6 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../index.css'
-import profile from '../Assets/profile.png';
+import profile from '../assets/profile.png';
+import heartDefault from '../assets/heartDefault.png';
+import cart from '../assets/cart.png';
+import heartHover from '../assets/red_heart.png';
+
+const WishlistIcon = () => {
+    const [imgSrc, setImgSrc] = useState(heartDefault);
+    return (
+      <img 
+        src={imgSrc}
+        alt="Wishlist" 
+        className="w-6 h-6 object-contain cursor-pointer transition-all duration-200 navbar"
+        onMouseEnter={() => setImgSrc(heartHover)}
+        onMouseLeave={() => setImgSrc(heartDefault)}
+      />
+    );
+  };
 
 const Navbar = () => {
   return (
@@ -50,13 +66,9 @@ const Navbar = () => {
             alt="Profile" 
             className="w-8 h-8 object-contain cursor-pointer navbar"
           />
+          <WishlistIcon/>
           <img 
-            src="./assets/wishlist.png" 
-            alt="Wishlist" 
-            className="w-8 h-8 object-contain cursor-pointer navbar"
-          />
-          <img 
-            src="/assets/cart.png" 
+            src={cart} 
             alt="Cart" 
             className="w-8 h-8 object-contain cursor-pointer navbar"
           />
