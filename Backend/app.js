@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
 import cookieParser from "cookie-parser";
-import User from "./models/userSchema";
+import User from "./models/userSchema.js";
 
 dotenv.config();
 const app = express();
