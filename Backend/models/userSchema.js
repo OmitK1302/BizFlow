@@ -33,7 +33,7 @@ const userSchema = new Schema({
     }
 });
 
-user.pre("save", async function (next) {
+userSchema.pre("save", async function (next) {
     if(!this.isModified("password")) {
         next();
     }
@@ -42,11 +42,11 @@ user.pre("save", async function (next) {
     next();
 });
 
-user.methods.isPasswordCorrect = async function(password){
+userSchema.methods.isPasswordCorrect = async function(password){
     return await bcrypt.compare(password,this.password);
 }
 
-user.methods.generateAccessToken = async function () {
+userSchema.methods.generateAccessToken = async function () {
     return jwt.sign(
         {
             _id: this._id,
