@@ -9,7 +9,7 @@ dotenv.config();
 const app = express();
 
 // Mongoose connection
-mongoose.connect("mongodb://localhost:27017/BizFlow").then(() => {
+mongoose.connect(process.env.MONGO_URI).then(() => {
   console.log("Data base connect");
 });
 
