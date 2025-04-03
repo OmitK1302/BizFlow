@@ -4,6 +4,8 @@ import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
 import cookieParser from "cookie-parser";
 import User from "./models/userSchema.js";
+import Product from "./models/productsSchema.js";
+
 
 dotenv.config();
 const app = express();
@@ -73,6 +75,23 @@ app.post("/login",async(req,res)=>{
     }
         
  
+});
+
+// logOut
+app.post("/logout", (req, res) => {
+  res.clearCookie("accessToken").json({ message: "Logged out successfully" });
+});
+
+
+//Product information and product show
+app.get("/product",async(req,res)=>{
+  const product=await Product.find();
+  if(product && product.length>0){
+   res.status(200).json(product);
+  }
+  else{
+    res.status(404).json({message:"No product found"});
+  }
 });
 
 //
