@@ -1,14 +1,10 @@
 import mongoose from "mongoose";
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
+// import jwt from "jsonwebtoken";
 
 const Schema=mongoose.Schema;
 const userSchema = new Schema({
-    firstName: {
-        type: String,
-        require: true,
-    },
-    lastName: {
+    name: {
         type: String,
         require: true,
     },
@@ -31,36 +27,38 @@ const userSchema = new Schema({
         type: String,
         default: "User",
     }
+}, {
+    timestamps: true,
 });
 
-userSchema.pre("save", async function (next) {
-    if(!this.isModified("password")) {
+userSchema.methods.matchPassword = async function (enteredPassword) {
+    return await bcrypt.compare(enteredPassword, this.password);
+};
+
+userSchema.pre('save', async function(next) {
+    if(!this.isModified('password')){
         next();
     }
-        // return next();
-    this.password = await bcrypt.hashSync(this.password,10);
-    next();
+
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
 });
 
-userSchema.methods.isPasswordCorrect = async function(password){
-    return await bcrypt.compare(password,this.password);
-}
+// userSchema.methods.generateAccessToken = async function () {
+//     return jwt.sign(
+//         {
+//             _id: this._id,
+//             email: this.email,
+//             firstName:this.firstName,
+//             lastName:this.lastName,
+//         },
+//         process.env.ACCESS_TOKEN_SECRET,
+//         {
+//           expiresIn: process.env.REFRESH_TOKEN_EXPIRY,
+//         }
 
-userSchema.methods.generateAccessToken = async function () {
-    return jwt.sign(
-        {
-            _id: this._id,
-            email: this.email,
-            firstName:this.firstName,
-            lastName:this.lastName,
-        },
-        process.env.ACCESS_TOKEN_SECRET,
-        {
-          expiresIn: process.env.REFRESH_TOKEN_EXPIRY,
-        }
-
-    );
-};
+//     );
+// };
 
 const User = mongoose.model("User", userSchema);
 export default User;
