@@ -94,7 +94,39 @@ app.get("/product",async(req,res)=>{
   }
 });
 
-//
+
+// add product info
+app.post("/add_Product", async (req, res) => {
+  const {
+    productName,
+    productDescription,
+    productImage,
+    productPrice,
+    seller_ID,
+    productQty,
+    productCategory,
+  } = req.body;
+
+  try {
+    const addProduct = await Product.create({
+      name: productName,
+      description: productDescription,
+      image: productImage,
+      price: productPrice,
+      seller: seller_ID,
+      qty: productQty,
+      category: productCategory,
+    });
+    if (addProduct) {
+      return res.status(200).json({ message: "Product added successfully", product: addProduct }); 
+    } else {
+      return res.status(412).json({ message: "Some things wrong please try later" }); 
+    }
+  } catch (error) {
+    return res.status(500).json({ message: "Internal server error while adding product" }); 
+  }
+});
+
 
 app.listen(process.env.PORT, () => {
   console.log(`Server runing on http://localhost:${process.env.PORT}`);
