@@ -1,15 +1,8 @@
-import react from 'react'
-import Navbar from './components/Navbar'
-import Product from './components/Product'
+import React from 'react'
 
-
-function App() {
-
+const App = () => {
   return (
-    <>
-    <Navbar/>
-    <Product/>
-    </>
+    <div>App</div>
   )
 }
 

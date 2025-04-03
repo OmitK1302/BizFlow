@@ -5,6 +5,7 @@ import heartDefault from '../assets/heart-regular.svg';
 import cart from '../assets/cart.png';
 import heartHover from '../assets/heart-solid.svg';
 import logo from '../assets/logo.png';
+import { Link } from 'react-router-dom';
 
 const WishlistIcon = () => {
   const [imgSrc, setImgSrc] = useState(heartDefault);
@@ -41,14 +42,16 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 w-full flex justify-between items-center p-4 !bg-white shadow-md z-50 navbar">
       {/* Left Section: Logo and Brand Name */}
-      <div className="flex items-center !bg-white">
-        <img 
-          src={logo} 
-          alt="Logo" 
-          className="w-12 h-12 object-contain navbar"
-        />
-        <span className="ml-2 text-2xl font-bold text-black !bg-white">BizFlow</span>
-      </div>
+      <Link to= '/'>
+        <div className="flex items-center !bg-white">
+          <img 
+            src={logo} 
+            alt="Logo" 
+            className="w-12 h-12 object-contain navbar"
+          />
+          <span className="ml-2 text-2xl font-bold text-black !bg-white">BizFlow</span>
+        </div>
+      </Link>
 
       {/* Center Section: Search Bar and Navigation Links */}
       <div className="flex flex-1 items-center justify-center space-x-8 mx-4">
@@ -106,18 +109,18 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center space-x-10">
-          <a 
-            href="/products" 
+          <Link 
+            to="/products" 
             className="text-gray-600 text-lg font-medium transition-all duration-300 hover:text-blue-600 relative after:content-[''] after:absolute after:w-full after:h-0.5 after:bg-blue-600 after:left-0 after:bottom-[-4px] after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
           >
             Products
-          </a>
-          <a 
-            href="/about" 
+          </Link>
+          <Link 
+            to="/about" 
             className="text-gray-600 text-lg font-medium transition-all duration-300 hover:text-blue-600 relative after:content-[''] after:absolute after:w-full after:h-0.5 after:bg-blue-600 after:left-0 after:bottom-[-4px] after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
           >
             About Us
-          </a>
+          </Link>
         </div>
       </div>
 

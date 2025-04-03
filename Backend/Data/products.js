@@ -2,12 +2,12 @@
 
 const products = [
     {
-        "name": "Apple iPhone 14 Pro Max",
+        "name": "Apple iPhone 15 (128 GB)",
         "description": "The latest iPhone with a 6.7-inch Super Retina XDR display, A16 Bionic chip, and advanced triple-camera system.",
         "category": "Electronics",
         "brand": "Apple",
         "price": "91,499",  
-        "image": "https://example.com/images/iphone-14-pro-max.jpg",
+        "image": "https://rukminim2.flixcart.com/image/416/416/xif0q/mobile/h/d/9/-original-imagtc2qzgnnuhxh.jpeg",
         "qty": "500",
         "reviews": [
             {
@@ -23,12 +23,12 @@ const products = [
         ]
     },
     {
-        "name": "Samsung 55-inch 4K UHD Smart TV",
+        "name": "Samsung 138 cm (55-inch) 4K UHD Smart TV",
         "description": "A 55-inch 4K UHD smart TV with HDR, voice control, and built-in apps for Netflix, YouTube, and more.",
         "category": "Electronics",
         "brand": "Samsung",
         "price": "45,699", 
-        "image": "https://example.com/images/samsung-4k-tv.jpg",
+        "image": "https://m.media-amazon.com/images/G/31/apparel/rcxgs/tile._CB483369979_.gif",
         "qty": "200",
         "reviews": [
             {
