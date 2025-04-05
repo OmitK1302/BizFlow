@@ -86,7 +86,7 @@ const CartComponent = ({item}) => {
 
       {/* The custom dialog box for removing item from the cart */}
       {showDialogBox && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-[#ebe5c244]">
           <div className="bg-white p-6 rounded-lg shadow-lg">
             <p className="text-lg font-semibold mb-4">Are you sure you want to remove this item?</p>
             <div className="flex justify-end gap-4">
@@ -99,7 +99,7 @@ const CartComponent = ({item}) => {
 
       {/* Dialog box for maximum stock reached */}
       {showDialogForMaxStock && (
-        <div className="fixed inset-0 flex items-center justify-center bg-[#fffefe00]">
+        <div className="fixed inset-0 flex items-center justify-center bg-[#ebe5c244]">
           <div className="bg-white p-6 rounded-lg shadow-lg">
             <p className="text-lg font-semibold mb-4">Can't add any more items. Max Stock reached!</p>
             <div className="flex justify-end gap-4">
