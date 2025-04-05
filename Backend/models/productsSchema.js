@@ -44,7 +44,7 @@ const productSchema = new mongoose.Schema({
         require: true,
         ref: "User",
     },
-    qty: {
+    inStock: {
         type: String,
         require: true,
     },
@@ -53,6 +53,10 @@ const productSchema = new mongoose.Schema({
         require: true,
     },
     reviews: [reviewSchema],
+    rating: {
+        type: String,
+        default: "0",
+    }
 }, {
     timestamps: true,
 });

@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { hide, show } from '../assets/icons';
 
 
-const LoginScreen = () => {
+const RegisterScreen = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -12,6 +12,12 @@ const LoginScreen = () => {
 
     const [showPassword, setShowPassword] = useState(false);
     const passwordRef = useRef(null);
+
+    const [name, setName] = useState("");
+
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const confirmPasswordRef = useRef(null);
 
     
     
@@ -25,6 +31,11 @@ const LoginScreen = () => {
         setTimeout(() => passwordRef.current?.focus(), 0);
     };
 
+    const toggleConfirmPasswordVisibility = () => {
+        setShowConfirmPassword((prev) => !prev);
+        setTimeout(() => confirmPasswordRef.current?.focus(), 0);
+    };
+
     const submitHandler = async (e) => {
         e.preventDefault();
         // toast.info("Login button clicked!"); // This should appear immediately
@@ -35,9 +46,17 @@ const LoginScreen = () => {
         {/* <Nav /> */}
         <div className='w-full px-4 py-24 sm:pt-28 flex justify-center items-center font-montserrat'>
             <div className='w-96 p-12 border-x-2 mt-16'>
-                <h1 className='text-3xl mb-4 font-bold text-coral-red'>Sign In</h1>
+                <h1 className='text-3xl mb-4 font-bold text-coral-red'>Register</h1>
             
                 <form className='flex flex-col gap-4' onSubmit={submitHandler}>
+                    <label className='flex flex-col gap-2'>
+                        Name: 
+                        <div className='flex p-2 border-2 border-gray-200 bg-white rounded-md focus-within:border-coral-red'>
+                            <input className='focus:outline-none bg-[#fffbfb00]' type= "email" value={name} onChange={(e) => setName((a) => a = e.target.value)} />
+                            <img className='w-auto h-6' src="#" alt="" />
+                        </div>
+                    </label>
+
                     <label className='flex flex-col gap-2'>
                         Email: 
                         <div className='flex p-2 border-2 border-gray-200 bg-white rounded-md focus-within:border-coral-red'>
@@ -66,9 +85,30 @@ const LoginScreen = () => {
                             </button>
                         </div>
                     </label>
+
+                    <label className='flex flex-col gap-2'>
+                        Confirm Password:
+                        <div className='flex p-2 border-2 border-gray-200 bg-white rounded-md focus-within:border-coral-red relative'>
+                            <input
+                                ref={passwordRef}
+                                className='focus:outline-none bg-transparent w-full'
+                                type={showConfirmPassword ? "text" : "password"}
+                                value={confirmPassword}
+                                onChange={(e) => setConfirmPassword((a) => a = e.target.value)}
+                                
+                            />
+                            <button
+                                type="button"
+                                className="absolute right-3 top-3"
+                                onClick={() => toggleConfirmPasswordVisibility()}
+                            >
+                                <img width={20} src={showConfirmPassword ? hide : show} alt="Hide or show password" />
+                            </button>
+                        </div>
+                    </label>
                     
-                    <button type='submit' className='border-2 border-[#5c5742] rounded-md bg-[#EBE5C2] hover:text-white p-4 cursor-pointer hover:bg-[#5c5742] font-bold text-xl' >
-                        Login
+                    <button type='submit' className={`border-2 border-[#5c5742] rounded-md bg-[#EBE5C2] hover:text-white p-4 cursor-pointer hover:bg-[#5c5742] font-bold text-xl ${confirmPassword === password ? "" : ""}`} disabled={confirmPassword !== password}>
+                        Register
                     </button>
 
                     {/* <button onClick={() => toast.success("Toast test!")} className="border-2 p-2 bg-green-500 text-white">
@@ -107,4 +147,4 @@ const LoginScreen = () => {
   )
 }
 
-export default LoginScreen
+export default RegisterScreen

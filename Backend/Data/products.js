@@ -7,8 +7,8 @@ const products = [
         "category": "Electronics",
         "brand": "Apple",
         "price": "91,499",  
-        "image": "https://rukminim2.flixcart.com/image/416/416/xif0q/mobile/h/d/9/-original-imagtc2qzgnnuhxh.jpeg",
-        "qty": "500",
+        "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-pro-max-1.jpg",
+        "inStock": "500",
         "reviews": [
             {
                 "name": "TechGuru",
@@ -28,8 +28,8 @@ const products = [
         "category": "Electronics",
         "brand": "Samsung",
         "price": "45,699", 
-        "image": "https://m.media-amazon.com/images/G/31/apparel/rcxgs/tile._CB483369979_.gif",
-        "qty": "200",
+        "image": "https://m.media-amazon.com/images/I/81mLFIaCYwL.jpg",
+        "inStock": "200",
         "reviews": [
             {
                 "name": "MovieBuff123",
@@ -41,7 +41,8 @@ const products = [
                 "rating": 4,
                 "comment": "Great TV overall, but the sound could be better."
             }
-        ]
+        ],
+        rating: "4.5",
     },
     {
         "name": "Dyson V11 Torque Drive Cordless Vacuum Cleaner",
@@ -49,8 +50,8 @@ const products = [
         "category": "Home Appliances",
         "brand": "Dyson",
         "price": "58,199",  
-        "image": "https://example.com/images/dyson-v11.jpg",
-        "qty": "300",
+        "image": "https://dynamicvac.com/cdn/shop/files/dyson-v11-corldess-stick-vacuum-6bf0d478-11d9-4984-985f-e4e825e92c1e-jpgrendition.jpg?v=1729639090&width=1946",
+        "inStock": "300",
         "reviews": [
             {
                 "name": "CleanFreak",
@@ -62,7 +63,8 @@ const products = [
                 "rating": 4,
                 "comment": "Great performance, but it's a bit heavy for prolonged use."
             }
-        ]
+        ],
+        rating: "4.8",
     },
     {
         "name": "Instant Pot Duo 7-in-1 Electric Pressure Cooker",
@@ -70,8 +72,8 @@ const products = [
         "category": "Home Appliances",
         "brand": "Instant Pot",
         "price": "7,479", 
-        "image": "https://example.com/images/instant-pot.jpg",
-        "qty": "1000",
+        "image": "https://images-cdn.ubuy.co.in/63eed035df3e5717a56bc995-instant-pot-duo-7-in-1-electric-pressure.jpg",
+        "inStock": "1000",
         "reviews": [
             {
                 "name": "KitchenMaster",
@@ -83,7 +85,8 @@ const products = [
                 "rating": 4,
                 "comment": "Great for family meals, but it takes up a bit of counter space."
             }
-        ]
+        ],
+        rating: "4.7",
     },
     {
         "name": "Fitbit Charge 5 Fitness and Health Tracker",
@@ -91,8 +94,8 @@ const products = [
         "category": "Fitness",
         "brand": "Fitbit",
         "price": "14,949",  
-        "image": "https://example.com/images/fitbit-charge-5.jpg",
-        "qty": "400",
+        "image": "https://in.static.webuy.com/product_images/Electronics/Activity%20Trackers/0810038857237C_l.jpg",
+        "inStock": "400",
         "reviews": [
             {
                 "name": "ActiveJoe",
@@ -104,16 +107,17 @@ const products = [
                 "rating": 4,
                 "comment": "Great for workouts, but the display could be brighter."
             }
-        ]
+        ],
+        rating: "4.6",
     },
     {
-        "name": "Adidas Running Shoes",
+        "name": "Adidas Urbann 5 Running Shoes",
         "description": "High-performance running shoes with cushioned soles and breathable mesh upper.",
         "category": "Fitness",
         "brand": "Adidas",
         "price": "6,999", 
-        "image": "https://example.com/images/adidas-running-shoes.jpg",
-        "qty": "350",
+        "image": "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/2147f7ab294341d09fe787f08ed921a5_9366/Ultrarun_5_Running_Shoes_White_IE8791_01_standard.jpg",
+        "inStock": "350",
         "reviews": [
             {
                 "name": "ComfortRunner",
@@ -125,7 +129,8 @@ const products = [
                 "rating": 4,
                 "comment": "Perfect for recovery runs, but they might not be the best for speedwork."
             }
-        ]
+        ],
+        rating: "4.5",
     },
     {
         "name": "Levi's 501 Original Fit Jeans",
@@ -133,8 +138,8 @@ const products = [
         "category": "Clothing",
         "brand": "Levi's",
         "price": "4,499", 
-        "image": "https://example.com/images/levis-501-jeans.jpg", 
-        "qty": "500",
+        "image": "https://images-cdn.ubuy.co.in/655431a87bad4e07c04e0405-levi-s-men-s-501-original-fit-jeans.jpg", 
+        "inStock": "500",
         "reviews": [
             {
                 "name": "StyleSeeker",
@@ -146,7 +151,8 @@ const products = [
                 "rating": 4,
                 "comment": "Love the fit, but the denim feels a little stiff at first."
             }
-        ]
+        ],
+        rating: "4.4",
     },
     {
         "name": "Nike Dri-FIT Training T-shirt",
@@ -154,8 +160,8 @@ const products = [
         "category": "Clothing",
         "brand": "Nike",
         "price": "1,999", 
-        "image": "https://example.com/images/nike-dri-fit-shirt.jpg",
-        "qty": "1000",
+        "image": "https://static.nike.com/a/images/t_PDP_936_v1/f_auto,q_auto:eco/c7a010d4-43a8-4c18-8f71-48eac5dcda18/AS+M+NK+DF+PRIMARY+STMT+SS.png",
+        "inStock": "1000",
         "reviews": [
             {
                 "name": "FitFanatic",
@@ -167,16 +173,17 @@ const products = [
                 "rating": 4,
                 "comment": "Very comfortable, but wish it came in more colors."
             }
-        ]
+        ],
+        rating: "4.6",
     },
     {
-        "name": "Olay Regenerist Micro-Sculpting Cream",
+        "name": "Dot and Key Super Hydrating Gel Cream",
         "description": "Anti-aging cream designed to reduce wrinkles and firm skin, leaving your face smooth and radiant.",
         "category": "Daily Usage",
         "brand": "Olay",
         "price": "1,399",  
-        "image": "https://example.com/images/olay-cream.jpg",
-        "qty": "600",
+        "image": "https://www.dotandkey.com/cdn/shop/files/1-Br-SS.jpg?v=1740473453",
+        "inStock": "600",
         "reviews": [
             {
                 "name": "GlowUp",
@@ -188,7 +195,8 @@ const products = [
                 "rating": 4,
                 "comment": "Great for reducing fine lines, but it can feel greasy sometimes."
             }
-        ]
+        ],
+        rating: "4.7",
     },
     {
         "name": "Gillette Fusion ProGlide Razor",
@@ -196,8 +204,8 @@ const products = [
         "category": "Daily Usage",
         "brand": "Gillette",
         "price": "799",  
-        "image": "https://example.com/images/gillette-razor.jpg",
-        "qty": "800",
+        "image": "https://m.media-amazon.com/images/I/81kfZhNWM-L.jpg",
+        "inStock": "800",
         "reviews": [
             {
                 "name": "SmoothShaver",
@@ -209,7 +217,8 @@ const products = [
                 "rating": 4,
                 "comment": "Good razor, but the blades wear out a bit faster than I expected."
             }
-        ]
+        ],
+        rating: "4.5",
     },
     {
         "name": "Moleskine Classic Notebook",
@@ -217,8 +226,8 @@ const products = [
         "category": "Stationery",
         "brand": "Moleskine",
         "price": "1,199", 
-        "image": "https://example.com/images/moleskine-notebook.jpg",
-        "qty": "1500",
+        "image": "https://images-cdn.ubuy.co.in/635d561d68bc5105456c7062-moleskine-classic-notebook-hard-cover.jpg",
+        "inStock": "1500",
         "reviews": [
             {
                 "name": "NoteTaker",
@@ -230,7 +239,8 @@ const products = [
                 "rating": 4,
                 "comment": "Beautiful notebook, but it could be a little thicker."
             }
-        ]
+        ],
+        rating: "4.6",
     },
     {
         "name": "Pilot G2 Gel Pens (Pack of 5)",
@@ -238,8 +248,8 @@ const products = [
         "category": "Stationery",
         "brand": "Pilot",
         "price": "199",  
-        "image": "https://example.com/images/pilot-g2-pens.jpg",
-        "qty": "3000",
+        "image": "https://m.media-amazon.com/images/I/81j2s7V2ncL.jpg",
+        "inStock": "3000",
         "reviews": [
             {
                 "name": "SmoothWriter",
@@ -251,7 +261,8 @@ const products = [
                 "rating": 4,
                 "comment": "Great pens, but I wish the ink lasted a little longer."
             }
-        ]
+        ],
+        rating: "4.8",
     }
 ]
 

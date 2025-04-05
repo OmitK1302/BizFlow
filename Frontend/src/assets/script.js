@@ -8,6 +8,7 @@ import headphones4 from './headphone4.jpeg'
 import heartRegular from './heart-regular.svg'
 import heartSolid from './heart-solid.svg'
 import profile from './profile.png'
+import outOfStock from './outOfStock.png'
 
 
 export {
@@ -20,5 +21,6 @@ export {
     headphones4,
     heartRegular,
     heartSolid,
-    profile
+    profile,
+    outOfStock
 }

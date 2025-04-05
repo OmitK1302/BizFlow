@@ -6,6 +6,8 @@ import cart from '../assets/cart.png';
 import heartHover from '../assets/heart-solid.svg';
 import logo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 
 const WishlistIcon = () => {
   const [imgSrc, setImgSrc] = useState(heartDefault);
@@ -23,6 +25,8 @@ const WishlistIcon = () => {
 const Navbar = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isFocused, setIsFocused] = useState(false);
+
+  const {cartItems} = useSelector((state) => state.cart);
 
   // Sample data for suggestions
   const suggestions = [
@@ -127,11 +131,19 @@ const Navbar = () => {
       {/* Right Section: Navigation Links and Icons */}
       <div className="flex items-center space-x-7 navbar mr-2">
         <WishlistIcon />
-        <img 
-          src={cart} 
-          alt="Cart" 
-          className="w-7 h-7 object-contain cursor-pointer navbar"
-        />
+
+        <Link to={"/cart"}>
+          <div className='flex'>
+            <img 
+              src={cart} 
+              alt="Cart" 
+              className="w-7 h-7 object-contain cursor-pointer navbar"
+            />
+            {cartItems.length && cartItems.length}
+          </div>
+        </Link>
+        
+        
         <img 
           src={profile} 
           alt="Profile" 
