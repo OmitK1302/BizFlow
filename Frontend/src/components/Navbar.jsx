@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { use, useState } from 'react';
 import '../index.css';
 import profile from '../assets/profile.png';
 import heartDefault from '../assets/heart-regular.svg';
 import cart from '../assets/cart.png';
 import heartHover from '../assets/heart-solid.svg';
 import logo from '../assets/logo.png';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../slices/authSlice';
+import { useLogoutMutation } from '../slices/userApiSlice';
 
 
 const WishlistIcon = () => {
@@ -26,6 +28,29 @@ const Navbar = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isFocused, setIsFocused] = useState(false);
 
+  const [showProfile, setShowProfile] = useState(false);
+  const handleProfileClick = () => {
+    setShowProfile(!showProfile);
+  }
+
+
+  const [logoutApiCall] = useLogoutMutation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = async() => {
+    try {
+      await logoutApiCall().unwrap();
+      dispatch(logout());
+      navigate('/login');
+    } catch (error) {
+      console.error("Logout failed:", error);
+      
+    }
+  }
+
+
+
   const {cartItems} = useSelector((state) => state.cart);
 
   // Sample data for suggestions
@@ -43,6 +68,12 @@ const Navbar = () => {
           item.productName.toLowerCase().includes(searchTerm.toLowerCase())
         );
 
+  const {userInfo} = useSelector((state) => state.auth);
+  const userLoggedIn = userInfo ? true : false;
+  const name = userInfo ? userInfo.name.split(" ")[0] : "";
+  console.log(name)
+
+
   return (
     <nav className="fixed top-0 left-0 w-full flex justify-between items-center p-4 !bg-white shadow-md z-50 navbar">
       {/* Left Section: Logo and Brand Name */}
@@ -58,7 +89,7 @@ const Navbar = () => {
       </Link>
 
       {/* Center Section: Search Bar and Navigation Links */}
-      <div className="flex flex-1 items-center justify-center space-x-8 mx-4">
+      <div className="flex flex-1 items-center font-monsterrat justify-center space-x-8 mx-4">
         <div className="relative w-[800px]">
           <input 
             type="text"
@@ -144,11 +175,45 @@ const Navbar = () => {
         </Link>
         
         
-        <img 
-          src={profile} 
-          alt="Profile" 
-          className="w-7 h-7 object-contain cursor-pointer navbar"
-        />
+        {userLoggedIn ? (
+          <div className='flex font-semibold cursor-pointer' onClick={handleProfileClick}>
+            <img 
+              src={profile} 
+              alt="Profile" 
+              className="w-7 h-7 object-contain navbar"
+            />
+            {name}
+
+            {showProfile && 
+              <div className="absolute z-10 mt-10 p-4 w-full bg-white border border-gray-300 rounded-md shadow-lg navbar flex flex-col gap-3">
+                <Link>
+                  <div>
+                    Profile
+                  </div>
+                </Link>
+                
+                <div onClick={handleLogout}>
+                  Logout
+                </div>
+              </div>
+            }
+          </div >
+        ) : (
+          <Link to={'/login'}>
+            <img 
+              src={profile} 
+              alt="Profile" 
+              className="w-7 h-7 object-contain navbar"
+            />
+          </Link>
+          
+        ) 
+        }
+
+
+        <div>
+          
+        </div>
       </div>
     </nav>
   );

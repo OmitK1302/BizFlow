@@ -68,8 +68,8 @@ const CartScreen = () => {
                                 <p className='text-coral-red'>₹ {(cartItems.length === 0) ? 0 :cart.totalPrice}</p>
                             </div>
 
-                            <div className='flex justify-end p-2 mt-8'>
-                                <button className={`border-2 border-[#5c5742] rounded-md bg-[#EBE5C2] hover:text-white p-4 cursor-pointer hover:bg-[#5c5742] font-bold text-xl ${cartItems.length === 0 ? "border-gray-400 text-gray-400 cursor-not-allowed" : "hover:bg-coral-red hover:text-white border-coral-red "} `} onClick={checkoutHandler} disabled={cartItems.length === 0}>
+                            <div className={`flex justify-end p-2 mt-8`}>
+                                <button className={`border-2 border-[#5c5742] rounded-md bg-[#EBE5C2] p-4  hover:bg-[#5c5742] font-bold text-xl ${cartItems.length === 0 ? "border-gray-400 text-gray-400 bg-gray-300 hover:bg-gray-300 hover:text-gray-400 cursor-not-allowed" : "hover:text-white cursor-pointer"} `} onClick={checkoutHandler} disabled={cartItems.length === 0}>
                                     Proceed to Checkout
                                 </button>
                             </div>

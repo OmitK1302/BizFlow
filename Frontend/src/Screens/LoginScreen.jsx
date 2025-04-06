@@ -1,6 +1,11 @@
 import React, { useState, useRef, useEffect  } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { hide, show } from '../assets/icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCredentials } from '../slices/authSlice';
+import { useLoginMutation } from '../slices/userApiSlice';
+import {toast} from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 
 const LoginScreen = () => {
@@ -14,6 +19,21 @@ const LoginScreen = () => {
     const passwordRef = useRef(null);
 
     
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const [Login, {isLoading}] = useLoginMutation();
+    const {userInfo} = useSelector((state) => state.auth);
+
+    const {search} = useLocation();
+    const sp = new URLSearchParams(search);
+    const redirect = sp.get('redirect') || '/';
+
+    useEffect(() => {
+        if(userInfo) {
+            navigate(redirect);
+        }
+    }, [userInfo, redirect, navigate]);
     
 
     const doNothing = () => {
@@ -27,6 +47,20 @@ const LoginScreen = () => {
 
     const submitHandler = async (e) => {
         e.preventDefault();
+
+        try {
+            const res = await Login({email, password}).unwrap();
+            dispatch(setCredentials({...res}));
+            // toast.success("Login Successful!"); 
+            navigate(redirect);
+            
+        } catch (error) {
+            console.log(error);
+            setShowErrorDialogBox(true);
+            
+        }
+
+
         // toast.info("Login button clicked!"); // This should appear immediately
     };
     

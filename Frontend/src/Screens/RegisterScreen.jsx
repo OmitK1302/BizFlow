@@ -1,6 +1,9 @@
 import React, { useState, useRef, useEffect  } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { hide, show } from '../assets/icons';
+import { useDispatch } from 'react-redux';
+import { useRegisterMutation } from '../slices/userApiSlice';
+import { setCredentials } from '../slices/authSlice';
 
 
 const RegisterScreen = () => {
@@ -36,8 +39,29 @@ const RegisterScreen = () => {
         setTimeout(() => confirmPasswordRef.current?.focus(), 0);
     };
 
+
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const {search} = useLocation();
+    const sp = new URLSearchParams(search);
+    const redirect = sp.get('redirect') || '/';
+
+    const [Register, {isLoading}] = useRegisterMutation();
+    // const {userInfor} = use
+
     const submitHandler = async (e) => {
         e.preventDefault();
+
+        try {
+            const res = await Register({name, email, password}).unwrap();
+            dispatch(setCredentials({...res}));
+            navigate(redirect);
+        } catch (error) {
+            console.log(error);
+            setShowErrorDialogBox(true);
+            
+        }
         // toast.info("Login button clicked!"); // This should appear immediately
     };
     
@@ -52,7 +76,7 @@ const RegisterScreen = () => {
                     <label className='flex flex-col gap-2'>
                         Name: 
                         <div className='flex p-2 border-2 border-gray-200 bg-white rounded-md focus-within:border-coral-red'>
-                            <input className='focus:outline-none bg-[#fffbfb00]' type= "email" value={name} onChange={(e) => setName((a) => a = e.target.value)} />
+                            <input className='focus:outline-none bg-[#fffbfb00]' type= "text" value={name} onChange={(e) => setName((a) => a = e.target.value)} />
                             <img className='w-auto h-6' src="#" alt="" />
                         </div>
                     </label>
@@ -107,7 +131,7 @@ const RegisterScreen = () => {
                         </div>
                     </label>
                     
-                    <button type='submit' className={`border-2 border-[#5c5742] rounded-md bg-[#EBE5C2] hover:text-white p-4 cursor-pointer hover:bg-[#5c5742] font-bold text-xl ${confirmPassword === password ? "" : ""}`} disabled={confirmPassword !== password}>
+                    <button type='submit' className={`border-2 border-[#5c5742] rounded-md p-4 bg-[#EBE5C2] font-bold text-xl ${confirmPassword === password ? "cursor-pointer hover:text-white hover:bg-[#5c5742]" : "cursor-not-allowed border-gray-400 text-gray-400 bg-gray-300"}`} disabled={confirmPassword !== password}>
                         Register
                     </button>
 
@@ -120,7 +144,7 @@ const RegisterScreen = () => {
                 </form>
 
                 <div className='p-2 mt-4'>
-                    <p>New Custome? <span className='text-coral-red font-bold underline'><Link to='/register'>Register</Link></span></p>
+                    <p>Already a Customer? <span className='text-coral-red font-bold underline'><Link to='/login'>Login</Link></span></p>
                 </div>
 
             </div>
