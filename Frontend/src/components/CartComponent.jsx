@@ -35,6 +35,13 @@ const CartComponent = ({item}) => {
     setShowDialogBox(false);
   }
 
+  const convertIntoNumber = (num) => {
+    const number = Number(num.replace(/,/g, ''));
+    // console.log(number);
+
+    return number;
+  } 
+  
   const reduceCartItemHandler = () => {
     // console.log(item);
     if(item.qty === 1){
@@ -67,14 +74,14 @@ const CartComponent = ({item}) => {
           <h3>{item.name}</h3>
           <p className=''>Rate: <span className='text-coral-red'>$ {item.price}</span></p>
           <p>Quantity: </p>
-          <div className='flex gap-2'>
+          <div className='flex gap-2 mb-4'>
             <button onClick={() => addCartItemHandler()} className='px-1.5 bg-slate-200 rounded-md text-xl'>+</button>
             <div className='border-2 px-2 rounded-md border-slate-200'>{item.qty}</div>
             <button onClick={() => reduceCartItemHandler()} className='px-2 bg-coral-red rounded-md text-xl'>-</button>
           </div>
           
-          <p>{item.inStock}</p>
-          <p>Price: <span className='text-coral-red'>₹ {(Number(item.price) * Number(item.qty)).toFixed(2)}</span></p>
+          {/* <p>{item.inStock}</p> */}
+          <p>Price: <span className='text-coral-red'>₹ {(convertIntoNumber(item.price) * Number(item.qty)).toFixed(2)}</span></p>
         </div>
       </div>
       

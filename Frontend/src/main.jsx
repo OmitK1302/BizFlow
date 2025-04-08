@@ -27,6 +27,8 @@ const router = createBrowserRouter(
       <Route path='/register' element={<RegisterScreen />} />
       <Route path='/product/:id' element={<ProductDetailScreen />} /> {/* Ensure this is the correct component */}
       <Route path='cart' element={<CartScreen />} />
+      <Route path='/products/:category' element={<ProductScreen />} />
+
       {/* <Route path='/products/:id' element={<ProductDetail />} /> */}
     </Route>
   )

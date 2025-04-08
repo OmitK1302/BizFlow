@@ -305,13 +305,19 @@ const D_TOP_PICKS = [
 ];
 
 //categories
+  // Electronics
+  // Home Appliances
+  // Fitness
+  // Clothing
+  // Daily Usage
+  // Stationery
 const D_CATEGORIES = [
   {
     name: "Electronics",
     icon: "💻",
     subCategories: ["Phones", "Laptops", "TVs", "Audio"],
     itemCount: "50K+ Products",
-    link: "/category/electronics",
+    link: "Electronics",
     gradient: "from-blue-500/10 to-blue-600/10"
   },
   {
@@ -319,7 +325,7 @@ const D_CATEGORIES = [
     icon: "👔",
     subCategories: ["Men", "Women", "Kids", "Accessories"],
     itemCount: "35K+ Products",
-    link: "/category/fashion",
+    link: "Clothing",
     gradient: "from-pink-500/10 to-purple-600/10"
   },
   {
@@ -327,7 +333,7 @@ const D_CATEGORIES = [
     icon: "🏠",
     subCategories: ["Furniture", "Decor", "Kitchen", "Garden"],
     itemCount: "28K+ Products",
-    link: "/category/home-living",
+    link: "HomeAppliances",
     gradient: "from-amber-500/10 to-yellow-600/10"
   },
   {
@@ -335,7 +341,7 @@ const D_CATEGORIES = [
     icon: "✨",
     subCategories: ["Makeup", "Skincare", "Haircare", "Fragrances"],
     itemCount: "22K+ Products",
-    link: "/category/beauty",
+    // link: "/category/beauty",
     gradient: "from-red-500/10 to-pink-600/10"
   },
   {
@@ -343,7 +349,7 @@ const D_CATEGORIES = [
     icon: " 🏋️‍♂️ ",
     subCategories: ["Equipment", "Clothing", "Supplements", "Accessories"],
     itemCount: "15K+ Products",
-    link: "/category/sports",
+    link: "Fitness",
     gradient: "from-green-500/10 to-emerald-600/10"
   },
   {

@@ -2,19 +2,38 @@ import React, { useState, useRef, useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import { ItemListContext } from "../store/store";
+import { hero } from "../assets/script";
 
 // Hero Section
 const HeroSection = () => {
   const { heroImg } = useContext(ItemListContext);
-
   return (
+
     <div className="relative w-full h-[500px] mt-16">
       <div className="w-full h-full">
-        <img
+        <div className="flex justify-between items-center h-full px-6 bg-gradient-to-r from-[#504B38] to-[#635E48] rounded-lg shadow-lg">
+          <div className="flex flex-col justify-center w-1/2 p-6">
+            <h1 className="text-4xl font-bold text-white mb-4">Welcome to BizFlow</h1>
+            <p className="text-lg text-white mb-4">Your one-stop solution for all wholesale needs</p>
+            <Link to={"/products"}>
+              <button className="px-6 py-3 mt-5 bg-[#EBE5C2] text-[#504B38] rounded-lg hover:bg-[#D4CDA1] transition-colors duration-300">
+                Explore Now
+              </button>
+            </Link>
+          </div>
+
+          <div className="w-1/2 h-full flex items-center justify-center">
+            <div className="relative w-full h-full overflow-hidden rounded-lg">
+              <img className="w-full" src={hero} alt="" />
+            </div>
+
+          </div>
+        </div>
+        {/* <img
           src={heroImg[0]}
           className="w-full h-full object-contain md:object-cover"
           alt="Hero"
-        />
+        /> */}
       </div>
     </div>
   );
@@ -137,7 +156,7 @@ const Categories = () => {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {categories.map((category) => (
           <Link
-            to={category.link}
+            to={`/products/${category.link}`}
             key={category.name}
             className={`p-6 rounded-xl text-center shadow-sm hover:shadow-md transition-all group bg-gradient-to-br ${category.gradient}`}
           >

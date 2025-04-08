@@ -71,7 +71,7 @@ const Navbar = () => {
   const {userInfo} = useSelector((state) => state.auth);
   const userLoggedIn = userInfo ? true : false;
   const name = userInfo ? userInfo.name.split(" ")[0] : "";
-  console.log(name)
+  // console.log(name)
 
 
   return (

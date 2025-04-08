@@ -9,6 +9,7 @@ import heartRegular from './heart-regular.svg'
 import heartSolid from './heart-solid.svg'
 import profile from './profile.png'
 import outOfStock from './outOfStock.png'
+import hero from './hero.png'
 
 
 export {
@@ -22,5 +23,6 @@ export {
     heartRegular,
     heartSolid,
     profile,
-    outOfStock
+    outOfStock,
+    hero
 }
