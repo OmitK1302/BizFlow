@@ -2,7 +2,7 @@ export const addDecimal = (num) => {
     return (Math.round(num * 100) / 100).toString();
 };
 
-const convertIntoNumber = (num) => {
+export const convertIntoNumber = (num) => {
     const number = Number(num.replace(/,/g, ''));
     // console.log(number);
 
@@ -10,9 +10,6 @@ const convertIntoNumber = (num) => {
 }
 
 export const updateCart = (state) => {
-
-
-    
     state.itemPrice = addDecimal(state.cartItems.reduce((acc, item) => acc + convertIntoNumber(item.price) * Number(item.qty), 0));
     // console.log(itemPrice)
     state.shippingPrice =  (addDecimal((convertIntoNumber(state.itemPrice) > 10000) ? 0 : 10));

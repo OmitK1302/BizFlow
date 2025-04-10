@@ -11,29 +11,11 @@ const ProductScreen = () => {
 
     
     const {data: products, isLoading, error} = useGetProductsQuery();
-    
-    // useEffect(() => {
-    //     const fetchProducts = async () => {
-    //         try {
-    //             const {data} = await axios.get('/api/products');
-    //             setProducts(data);
-    //         } catch (error) {
-    //             console.error("Error fetching products:", error);                
-    //         }
-            
-    //     };
-
-    //     fetchProducts();
-    // }, []);
 
     let category = useParams().category;
     if(category == "HomeAppliances") category = "Home Appliances";
-    // if(category) {
-    //     const updatedProducts = products.filter((product) => product.category === category);
-    // }
-    // else{
-    //     const updatedProducts = products;
-    // }
+
+
 
     if(isLoading) {
         return( 

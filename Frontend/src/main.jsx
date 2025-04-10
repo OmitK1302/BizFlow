@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider, createRoutesFromElements, Route } 
 import './index.css';
 import App from './App.jsx';
 import Layout from './components/Layout.jsx';
-import Product from './components/product.jsx'; // Ensure these components exist
+// import Product from './components/product.jsx';
 import LoginScreen from './Screens/LoginScreen.jsx';
 import RegisterScreen from './Screens/RegisterScreen.jsx';
 import ProductScreen from './Screens/ProductScreen.jsx';
@@ -14,6 +14,10 @@ import CartScreen from './Screens/CartScreen.jsx';
 
 import { Provider } from 'react-redux';
 import store from './store.js';
+import ShippingScreen from './Screens/ShippingScreen.jsx';
+import PaymentScreen from './Screens/PaymentScreen.jsx';
+import PrivateRoute from './components/PrivateRoute.jsx';
+import PlaceOrderScreen from './Screens/PlaceOrderScreen.jsx';
 
 
 // import ProductDetail from './components/ProductDetail.jsx'; // Ensure these components exist
@@ -29,6 +33,12 @@ const router = createBrowserRouter(
       <Route path='cart' element={<CartScreen />} />
       <Route path='/products/:category' element={<ProductScreen />} />
 
+      {/* Private Routes */}
+      <Route element={<PrivateRoute />}>
+        <Route path='/shipping' element={<ShippingScreen />} />
+        <Route path='/payment' element={<PaymentScreen />} />
+        <Route path='/placeorder' element={<PlaceOrderScreen />} />
+      </Route>
       {/* <Route path='/products/:id' element={<ProductDetail />} /> */}
     </Route>
   )

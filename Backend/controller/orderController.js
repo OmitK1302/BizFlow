@@ -23,20 +23,20 @@ const addOrderItems = asyncHandler(async(req, res) => {
 
     else{
         const order = new Order({
-            orderItems : orderItems.map((x) => ({
-                 ...x,
-                 product: x._id,
-                 _id: undefined,
+            orderItems: orderItems.map((x) => ({
+              ...x,
+              price: Number(x.price.toString().replace(/,/g, '')), // ✅ strip commas
+              product: x._id,
+              _id: undefined,
             })),
             user: req.user._id,
             shippingAddress,
             paymentMethod,
-            itemPrice,
-            shippingPrice,
-            taxPrice,
-            totalPrice,
-
-        });
+            itemPrice: Number(itemPrice.toString().replace(/,/g, '')),
+            shippingPrice: Number(shippingPrice.toString().replace(/,/g, '')),
+            taxPrice: Number(taxPrice.toString().replace(/,/g, '')),
+            totalPrice: Number(totalPrice.toString().replace(/,/g, '')),
+          });
 
         const createdOrder = await order.save();
         res.status(201).json(createdOrder);

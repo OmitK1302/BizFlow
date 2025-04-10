@@ -8,27 +8,6 @@ import { useGetProductsDetailsQuery, useGetProductsQuery } from '../slices/produ
 
 const ProductDetailScreen = () => {
 
-  // const [products, setProducts] = useState([]);
-  
-  // console.log(id)
-
-  // useEffect(() => {
-  //   const fetchProducts = async () => {
-  //     try {
-  //       const {data} = await axios.get('/api/products');
-  //       setProducts(data);
-  //       // console.log(data);
-  //     } catch (error) {
-  //       console.error("Error fetching products:", error);                
-  //     }
-  //   };
-  //   fetchProducts();
-  // }, []);
-
-  // const product = products.find((prod) => prod._id === id);
-  // console.log(product)
-
-
   const { id } = useParams();
   const {data: product, isLoading, error} = useGetProductsDetailsQuery(id);
 
