@@ -3,9 +3,9 @@ import mongoose from "mongoose";
 // Creating a schema named orderSchema
 const orderSchema = new mongoose.Schema({
     user: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: "User",
+        _id: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'User' },
+        name: { type: String, required: true },
+        email: { type: String, required: true }
     },
 
     orderItems: [
@@ -18,6 +18,7 @@ const orderSchema = new mongoose.Schema({
                 required: true,
                 ref: "Product",
             },
+            image: {type: String, required: true},
         }
     ],
 

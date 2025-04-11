@@ -29,7 +29,11 @@ const addOrderItems = asyncHandler(async(req, res) => {
               product: x._id,
               _id: undefined,
             })),
-            user: req.user._id,
+            user: {
+                _id: req.user._id,
+                name: req.user.name,
+                email: req.user.email,
+            }, 
             shippingAddress,
             paymentMethod,
             itemPrice: Number(itemPrice.toString().replace(/,/g, '')),

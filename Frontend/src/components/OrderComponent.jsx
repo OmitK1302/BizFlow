@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 import { convertIntoNumber } from '../utils/cartUtils'
 
 const OrderComponent = ({item}) => {
-    // console.log(item._id);
+    console.log(item._id);
   return (
         <>
-            <Link to={`/product/${item._id}`} className=''>
+            {/* <Link to={`/product/${item._id}`} className=''> */}
                 <div className='flex w-full p-2 mb-2 rounded-lg font-montserrat hover:shadow-inner insert-shadow-sm hover:bg-[#fff7f6]'>
                         <div className='flex flex-row gap-4 w-full justify-between items-center '>  
                             <div className='flex flex-row gap-4'>
@@ -23,12 +23,12 @@ const OrderComponent = ({item}) => {
                             </div>
 
                             <div className='text-2xl font-semibold sm:text-3xl sm:font-bold'>
-                            <p className='text-coral-red'>₹ {convertIntoNumber(item.price) * Number(item.qty)}</p>
+                            <p className='text-coral-red'>₹ {isNaN(item.price) ? convertIntoNumber(item.price) * Number(item.qty) : item.price}</p>
                             </div>
                 
                         </div>
                 </div>
-            </Link>
+            {/* </Link> */}
         </>
 
        

@@ -23,6 +23,10 @@ const RegisterScreen = () => {
     const confirmPasswordRef = useRef(null);
 
     
+    const toggleConfirmPasswordVisibility = () => {
+        setShowConfirmPassword((prev) => !prev);
+        setTimeout(() => confirmPasswordRef.current?.focus(), 0);
+    };
     
 
     const doNothing = () => {
@@ -34,10 +38,6 @@ const RegisterScreen = () => {
         setTimeout(() => passwordRef.current?.focus(), 0);
     };
 
-    const toggleConfirmPasswordVisibility = () => {
-        setShowConfirmPassword((prev) => !prev);
-        setTimeout(() => confirmPasswordRef.current?.focus(), 0);
-    };
 
 
     const navigate = useNavigate();

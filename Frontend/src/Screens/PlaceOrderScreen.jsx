@@ -62,7 +62,7 @@ const PlaceOrderScreen = () => {
             <div className='border-b-2 m-4'>
                 <h2 className='px-4 text-2xl sm:text-3xl font-semibold font-montserrat text-[#7f7f7f]'>Shipping Address: </h2>
                 <p className='px-8 py-4 text-lg sm:text-xl font-montserrat text-[#000000]'>
-                    {cart.shippingAddress.address + ", " + cart.shippingAddress.state + ", " + cart.shippingAddress.city + " - " + cart.shippingAddress.postalCode}
+                    {cart.shippingAddress.address + ", " + cart.shippingAddress.country + ", " + cart.shippingAddress.city + " - " + cart.shippingAddress.postalCode}
                 </p>
             </div>
 
@@ -87,9 +87,11 @@ const PlaceOrderScreen = () => {
                             <section className="flex flex-col gap-4 sm:px-16 py-8">
                                 {cart.cartItems.map((item) => {
                                     return (
-                                        <div className='border-b-2 ' key={item._id + item.size}>
-                                            <OrderComponent item={item} />
-                                        </div>
+                                        <Link to={`/product/${item._id}`}>
+                                            <div className='border-b-2 ' key={item._id + item.size}>
+                                                <OrderComponent item={item} />
+                                            </div>
+                                        </Link>
                                     );
                                 })}
                             </section>

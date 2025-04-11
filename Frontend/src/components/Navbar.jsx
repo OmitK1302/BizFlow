@@ -186,7 +186,7 @@ const Navbar = () => {
 
             {showProfile && 
               <div className="absolute z-10 mt-10 p-4 w-full bg-white border border-gray-300 rounded-md shadow-lg navbar flex flex-col gap-3">
-                <Link>
+                <Link to={'/profile'}>
                   <div>
                     Profile
                   </div>
