@@ -1,31 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useGetOrderByIdQuery } from '../slices/orderApiSlice';
 import OrderComponent from '../components/OrderComponent';
 
-/*
-_id: "67f808af1dba9e7c06fb08db"
-createdAt: "2025-04-10T18:06:39.878Z"
-isDelivered: false
-isPaid: false
-itemPrice: 4499
-orderItems: Array [ {…} ]
-0: Object { name: "Levi's 501 Original Fit Jeans", qty: 1, price: 4499, … }
-length: 1
-<prototype>: Array []
-paymentMethod: "PayPal"
-shippingAddress: Object { address: "dfsa", city: "asdf", postalCode: "asdf", … }
-address: "dfsa"
-city: "asdf"
-country: "afsda"
-postalCode: "asdf"​
-<prototype>: Object { … }
-shippingPrice: 10
-taxPrice: 809.82
-totalPrice: 5318.82
-updatedAt: "2025-04-10T18:06:39.878Z"
-user: "67f1874e52195c35f1412b57"
-*/
+import { usePayOrderMutation, useGetPayPalClientIdQuery } from '../slices/orderApiSlice';
+import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
+import { useSelector } from 'react-redux';
+
+// import 
 
 
 const OrderDetailScreen = () => {
@@ -33,8 +15,40 @@ const OrderDetailScreen = () => {
     // console.log(id);
 
     const {data: order, refetch, isLoading, error} = useGetOrderByIdQuery(id);
-    if(order) console.log(order.user.name);
-    console.log(order);
+    // if(order) console.log(order.user.name);
+    // console.log(order);
+
+    const [payOrder, {isLoading: loadingPay}] = usePayOrderMutation();
+    
+    const {data: paypal, isLoading: LoadingPayPal, error: errorPayPal} = useGetPayPalClientIdQuery();
+    
+    const  [{isPending}, paypalDispatch] = usePayPalScriptReducer();
+    
+    const {userInfo} = useSelector((state) => state.auth);
+
+    useEffect(() => {
+        if(!errorPayPal && !LoadingPayPal && paypal.clientId) {
+            paypalDispatch({
+                type: "resetOptions",
+                value: {
+                    "client-id": paypal.clientId,
+                    currency: "INR",
+                },
+            });
+            paypalDispatch({
+                type: "setLoadingStatus",
+                value: "pending",
+            });
+        }
+
+        if(order && !order.isPaid) {
+            if(!window.paypal) {
+                loadPayPalScript();
+            }
+        }
+
+    }, [order, paypal, paypalDispatch, LoadingPayPal, errorPayPal]);
+    
     return (
         <>
             <div className='px-4  w-full'>
